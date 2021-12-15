@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Form from "./Form";
+import Friend from "./Friend";
 
-function App() {
+const App = () => {
+  let friends = [
+    { name: "Sagar", height: 6 },
+    { name: "Kushal", height: 5.6 },
+    { name: "Ashish", height: 6 },
+    { name: "Rupesh", height: 5.8 },
+    { name: "Tika", height: 5.5 },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* {friends.map((friend, index) => (
+        <Friend key={index} friend={friend} />
+      ))} */}
+      <Form />
     </div>
   );
-}
+};
 
 export default App;
