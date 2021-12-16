@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 
 function Form() {
-  let [username, setUsername] = useState("");
-  let [subject, setSubject] = useState("");
-
-  let [student, setStudent] = useState({});
+  let [student, setStudent] = useState({ username: "", subject: "" });
   let [students, setStudents] = useState([]);
 
   const usernameHandler = (e) => {
-    setUsername(e.target.value);
+    // setUsername(e.target.value);
+    setStudent({
+      ...student,
+      username: e.target.value,
+    });
   };
 
   const subjectHandler = (e) => {
-    setSubject(e.target.value);
+    // setSubject(e.target.value);
+    setStudent({
+      ...student,
+      subject: e.target.value,
+    });
   };
 
   const submitHandler = (e) => {
     // prevents from reloading of page
     e.preventDefault();
-    console.log(username, subject);
 
-    setStudent({
-      username,
-      subject,
-    });
-    console.log(student);
-    setStudents([...students, student]);
-    console.log(students);
+    alert(`${student.username} studies ${student.subject} subject`);
+
+    students.push(student);
+    // setStudents([...students, student]);
+    setStudent({ username: "", subject: "" });
   };
 
   return (
@@ -34,31 +36,26 @@ function Form() {
       <form onSubmit={submitHandler}>
         <label htmlFor="username">Username : </label>
         <input
-          value={username}
+          value={student.username}
           id="username"
           type="text"
           placeholder="Enter Username"
           onChange={usernameHandler}
         />
         <label htmlFor="subjects">Subjects :</label>
-        <select
-          value={subject}
-          onChange={subjectHandler}
-          id="subjects"
-          htmlFor="subjects"
-        >
-          <option>Chemistry</option>
-          <option>React</option>
-          <option>Javascript</option>
+        <select value={student.subject} onChange={subjectHandler}>
+          <option value="Chemistry">Chemistry</option>
+          <option value="React">React</option>
+          <option value="Javascript">Javascript</option>
         </select>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
 
-      {students.map((student, index) => (
+      {students.map((s, index) => (
         <div key={index}>
           <h1>S.N : {index} </h1>
-          <p>Name : {student.username} </p>
-          <p>Subject : {student.subject} </p>
+          <p>Name : {s.username} </p>
+          <p>Subject : {s.subject} </p>
         </div>
       ))}
     </div>
