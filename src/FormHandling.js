@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 
-function Form() {
-  let [student, setStudent] = useState({ username: "", subject: "" });
+function FormHandling() {
+  let [student, setStudent] = useState({ username: "", subject: "React" });
   let [students, setStudents] = useState([]);
-
-  const usernameHandler = (e) => {
+  const usernameHandler = (event) => {
     setStudent({
       ...student,
-      username: e.target.value,
+      username: event.target.value,
+    });
+  };
+  const subjectHandler = (event) => {
+    setStudent({
+      ...student,
+      subject: event.target.value,
     });
   };
 
-  const subjectHandler = (e) => {
-    setStudent({
-      ...student,
-      subject: e.target.value,
-    });
-  };
-
-  const submitHandler = (e) => {
-    // prevents from reloading of page
-    e.preventDefault();
-    alert(`${student.username} studies ${student.subject} subject`);
-
-    // students.push(student);
-    setStudents([...students, student]); // spread operator
-    setStudent({ username: "", subject: "" });
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // alert(`${student.username} has ${student.subject} subject`);
+    setStudents([...students, student]);
   };
 
   return (
@@ -49,14 +43,14 @@ function Form() {
       </form>
 
       {students.map((s, index) => (
-        <div key={index}>
-          <h1>S.N : {index} </h1>
-          <p>Name : {s.username} </p>
-          <p>Subject : {s.subject} </p>
+        <div>
+          S.N : <h3>{index}</h3>
+          Username : <h3>{s.username}</h3>
+          Subject : <h3>{s.subject}</h3>
         </div>
       ))}
     </div>
   );
 }
 
-export default Form;
+export default FormHandling;

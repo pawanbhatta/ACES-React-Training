@@ -1,0 +1,47 @@
+.done {
+  border: 1px green solid;
+  color: green;
+}
+
+.done button {
+  background: green;
+  color: white;
+}
+
+.done button:hover {
+  background: darkgreen;
+  color: white;
+}
+
+li:not(.done) {
+  cursor: pointer;
+}
+
+li:not(.done):hover {
+  border: 1px solid black;
+  background: #00000008;
+}
+
+li:not(.done):hover::after {
+  content: "Double tap to mark the item as Done";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-size: 0.6em;
+}
+
+li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: min(20%, 20px);
+  margin-right: 10px;
+}
+
+li > span {
+  align-self: right;
+  margin: 10px;
+}

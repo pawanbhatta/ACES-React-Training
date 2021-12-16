@@ -1,6 +1,10 @@
 import React from "react";
 import Form from "./Form";
+import FormHandling from "./FormHandling";
 import Friend from "./Friend";
+import UsingRefs from "./UsingRefs";
+import Timer from "./Timer";
+import ToDo from "./ToDo";
 
 const App = () => {
   let friends = [
@@ -16,7 +20,9 @@ const App = () => {
       {/* {friends.map((friend, index) => (
         <Friend key={index} friend={friend} />
       ))} */}
-      <Form />
+      {/* <FormHandling /> */}
+      {/* <Timer /> */}
+      <ToDo />
     </div>
   );
 };
